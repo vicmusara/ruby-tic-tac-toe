@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Class Design
 # Player class
 class Player
@@ -10,6 +8,7 @@ class Player
   end
 end
 
+#Board class
 class Board
   attr_reader :grid
 
@@ -39,7 +38,7 @@ class Board
   end
 
   def winner?
-    winning_combination.any? do |combo|
+    winning_combinations.any? do |combo|
       [@grid[combo[0][0]][combo[0][1]], @grid[combo[1][0]][combo[1][1]],
        @grid[combo[2][0]][combo[2][1]]].uniq.length == 1 &&
         @grid[combo[0][0]][combo[0][1]] != ' '
@@ -56,6 +55,7 @@ class Board
   end
 end
 
+#Game class
 class Game
   def initialize
     @board = Board.new
